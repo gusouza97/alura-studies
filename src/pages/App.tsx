@@ -8,11 +8,19 @@ import style from './App.module.scss';
 function App() {
 
   const [tarefas, setTarefas] = useState<ITarefa[]>([]);
+  const [selecionado, settSelecionado] = useState<ITarefa>();
+
+  function selecionaTarefa(tarefaSelecionada: ITarefa){
+    settSelecionado(tarefaSelecionada);
+  }
 
   return (
     <div className={style.AppStyle}>
       <Form setTarefas={setTarefas} />
-      <List tarefas={tarefas}/>
+      <List 
+        tarefas={tarefas}
+        selecionaTarefa={selecionaTarefa}
+      />
       <Cronometer/>
     </div>
   );
