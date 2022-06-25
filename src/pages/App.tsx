@@ -8,10 +8,14 @@ import style from './App.module.scss';
 function App() {
 
   const [tarefas, setTarefas] = useState<ITarefa[]>([]);
-  const [selecionado, settSelecionado] = useState<ITarefa>();
+  const [selecionado, setSelecionado] = useState<ITarefa>();
 
   function selecionaTarefa(tarefaSelecionada: ITarefa){
-    settSelecionado(tarefaSelecionada);
+    setSelecionado(tarefaSelecionada);
+    setTarefas(tarefasAnteriores => tarefasAnteriores.map(tarefa => ({
+      ...tarefa, 
+      selecionado: tarefa.id === tarefaSelecionada.id ? true : false
+    })))
   }
 
   return (
