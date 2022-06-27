@@ -7,9 +7,10 @@ import style from "./Cronometer.module.scss";
 
 interface Props {
   selecionado: ITarefa | undefined
+  finalizarTarefa: () => void
 }
 
-function Cronometer({ selecionado } : Props) {
+function Cronometer({ selecionado, finalizarTarefa } : Props) {
 
   const [tempo, setTempo] = useState<number>();
 
@@ -25,8 +26,7 @@ function Cronometer({ selecionado } : Props) {
         setTempo(contador - 1);
         return regressiva(contador - 1)
       }
-
-      
+      finalizarTarefa();
     }, 1000);
   }
 
